@@ -34,7 +34,7 @@ Users should be able to:
 
 ### Links
 
-- Live Site URL: [https://devfinder-cg.netlify.app/](https://devfinder-cg.netlify.app/)
+- Live Site URL: 
 
 ## My process
 
