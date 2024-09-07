@@ -48,6 +48,7 @@ Users should be able to:
 - Github API
 - Flexbox
 - Tailwind CSS
+- DarkMode
 
 
 ### Useful resources
