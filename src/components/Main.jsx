@@ -12,16 +12,16 @@ export default function Main(props) {
   };
 
   return (
-    <div className="main rounded-xl gap-5 p-12 mt-7 flex flex-col md:flex-row">
+    <div className={` ${props.darkMode && 'dark'} main ${props.darkMode ? "bg-[#1E2A47]" : "bg-white"} rounded-xl gap-5 p-12 mt-7 flex flex-col md:flex-row`}>
       <div className=" ">
         <img className=" w-32 rounded-full" src={props.data.avatar_url} alt="" />
       </div>
       <div className="flex flex-col ">
         <div className="flex justify-between gap-20 ">
-          <h1 className=" text-3xl font-bold font-mono">
+          <h1 className=" text-3xl font-bold font-mono dark:text-white">
             {props.data.name ? props.data.name : ""}
           </h1>
-          <h2 className=" font-mono mt-1 ">
+          <h2 className=" font-mono mt-1 dark:text-white">
             {props.data.created_at
               ? `Joined ${formatDate(props.data.created_at)}`
               : ""}
@@ -46,14 +46,14 @@ export default function Main(props) {
             : ""}
         </p>
 
-        <div className=" bg-slate-100 rounded-xl p-4 mt-8">
-          <div className="flex flex-col items-start text-gray-500 font-mono">
+        <div className={` ${props.darkMode ? "bg-[#141D2F]":"bg-slate-100"} rounded-xl p-4 mt-8`}>
+          <div className="flex flex-col items-start  text-gray-500 dark:text-white font-mono">
             <div className="flex gap-14 mb-2">
               <p className="w-32 text-center">Repos</p>
               <p className="w-32 text-center">Followers</p>
               <p className="w-32 text-center">Following</p>
             </div>
-            <div className="flex gap-14 text-3xl font-bold text-slate-900">
+            <div className="flex gap-14 text-3xl font-bold text-slate-900 dark:text-white">
               <p className="w-32 text-center">{props.data.public_repos}</p>
               <p className="w-32 text-center">{props.data.followers}</p>
               <p className="w-32 text-center">{props.data.following}</p>
@@ -64,14 +64,14 @@ export default function Main(props) {
         <div className="grid grid-cols-2 gap-x-10 mt-10">
           <div className="flex gap-5">
             <img src={location} alt="" className="max-w-full h-5" />
-            <p className="font-mono">
+            <p className="font-mono dark:text-white">
               {props.data.location ? props.data.location : "Not Available"}
             </p>
           </div>
 
           <div className="flex gap-5">
             <img src={twitter} alt="" className="max-w-full h-5" />
-            <p className="font-mono">
+            <p className="font-mono dark:text-white">
               {props.data.twitter_username
                 ? props.data.twitter_username
                 : "Not Available"}
@@ -80,14 +80,14 @@ export default function Main(props) {
 
           <div className="flex gap-5 mt-6">
             <img src={website} alt="" className="max-w-full h-5" />
-            <p className="font-mono">
+            <p className="font-mono dark:text-white">
               {props.data.blog ? props.data.blog : "Not Available"}
             </p>
           </div>
 
           <div className="flex gap-5 mt-6">
             <img src={company} alt="" className="max-w-full h-5" />
-            <p className="font-mono">
+            <p className="font-mono dark:text-white">
               {props.data.company ? props.data.company : "Not Available"}
             </p>
           </div>

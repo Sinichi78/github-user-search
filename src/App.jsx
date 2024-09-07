@@ -5,9 +5,20 @@ import Main from "./components/Main.jsx";
 import Axios from "axios";
 
 export default function App(){
-  const [users, setUsers] = useState("");
+  const [users, setUsers] = useState("octocat");  // Default user
   const [data, setData] = useState({});
   const [inputData, setInputData] = useState(null);
+  const [darkMode, setDarkMode] = useState(false)
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+
+    if (!darkMode) {
+      document.body.classList.add("dark-mode");  
+    } else {
+      document.body.classList.remove("dark-mode"); 
+    }
+  };
 
   const getUser = () => {
     if (users.trim() !== "") {  // Ensure user input is not empty
@@ -34,18 +45,25 @@ export default function App(){
   };
 
   useEffect(() => {
-    getUser();
+    getUser();  // Fetch the default user on page load
   }, []);
 
   return(
     <div className="App">
-      <Header />
+      <Header 
+        toggleDarkMode={toggleDarkMode}
+        darkMode={darkMode} 
+      />
       <Search 
         users={users}
         getUser={getUser}
         handleChange={handleChange} 
+        darkMode={darkMode} 
       />
-      <Main data={data}/>
+      <Main 
+        data={data}
+        darkMode={darkMode} 
+      />
     </div>
   );
 }

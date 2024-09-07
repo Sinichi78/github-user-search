@@ -1,15 +1,37 @@
-import React from "react";
+import React, { useDebugValue } from "react";
 import moon from "/icon-moon.svg";
+import sun from "/icon-sun.svg";
 
-export default function Header() {
+export default function Header(props) {
   return (
-    <header className=" font-bold font-mono flex justify-between text-center align-middle text-2xl ">
-      <p>devfinder</p>
+    <div className={`${props.darkMode && "dark"}`}>
+      <header className=" font-bold font-mono flex justify-between text-center align-middle text-2xl ">
+        <p className="dark:text-white">devfinder</p>
 
-      <button className="flex gap-2 text-center mt-3 hover:text-black text-gray-500 hover:filter hover:brightness-0">
-        <p className=" font-semi-bold text-sm ">Dark</p>
-        <img className=" max-w-full h-5" src={moon}   alt="" />
-      </button>
-    </header>
+        <button
+  onClick={props.toggleDarkMode}
+  className="flex gap-2 text-center mt-3 group"  
+>
+  {props.darkMode ? (
+    <p className="text-sm dark:text-white group-hover:text-gray-500">Light</p>  
+  ) : (
+    <p className="text-sm text-gray-500 group-hover:text-black">Dark</p>  
+  )}
+  {props.darkMode ? (
+    <img
+      className="max-w-full h-5 group-hover:brightness-50"  
+      src={sun}
+      alt="sun icon"
+    />
+  ) : (
+    <img
+      className="max-w-full h-5 group-hover:brightness-0"  
+      src={moon}
+      alt="moon icon"
+    />
+  )}
+</button>
+      </header>
+    </div>
   );
 }
